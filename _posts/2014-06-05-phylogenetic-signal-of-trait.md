@@ -6,6 +6,7 @@ tags: [R, research]
 ---
 >This is my reading notes for *Functional and Phylogenetic Ecology in R* by Nathan Swenson.
 This post will be updated later after I learned more about this topic.
+Data can be found at [here](http://link.springer.com/chapter/10.1007%2F978-1-4614-9542-0_7)
 
 ## Phylogenetic signal
 

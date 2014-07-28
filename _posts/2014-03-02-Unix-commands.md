@@ -39,6 +39,7 @@ Here is a list of the most basic commands in Unix from my learning notes.
 + `ls /bin/*sh` will list all shells available.
 + `df -h` to get the disk of file system used (short of disk free?), `-h` means return human readable numbers, e.g. 100Mb. 100Gb.
 + `du -hs /path/to/directory` get the total size of the directory. `du` means disk usage, `-h` as above, `-s` means summary.
+	* If only want to have a look at folders within current directory, use `du -h --max-depth=1 .`.
 + `env` to view the current values of environment variables.
 + `PATH` the environment path of a program. e.g. `echo $PATH` will print a list of places the shell will ONLY look for a program to run.
 + `which` print the location of a program. e.g. `which ls`.

@@ -151,7 +151,9 @@ You can simply use `git pull` to update your local project from Github. If you c
 
 #### Push to Github
 
-Go to [github](https://github.com/), login, create a new repository, and follow their instruction.	 
+Go to [github](https://github.com/), login, create a new repository, and follow their instruction.	
+
+If you want to use SSH key when you push things to github, see [here](https://help.github.com/articles/generating-ssh-keys). Then you need change the url of your local repository, following [this page](https://help.github.com/articles/changing-a-remote-s-url). 
 
 ## Reference
 

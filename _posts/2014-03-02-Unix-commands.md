@@ -122,6 +122,9 @@ If file names have space in some of them, put `$filename` in quote to avoid prob
 + `^C` cancel what you are doing. If it does not work, try `^\`.
 + `^D` end of a line.
 + `^L` clean the screen of your shell.
++ `^h` delete back one character (backspace).
++ `^w` delete back one word.
++ `^u` delete back to the start of line.
  
 
 ##Shell scripts

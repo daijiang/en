@@ -99,7 +99,7 @@ In order to check an older version of a file:
 
 ####Undo actions
 
-	git checkout -- file.name # undo the modification in file.name
+	git checkout -- file.name # undo the modification in file.name (unstaged)
 	
 	git reset HEAD filename # unstage file
 	
@@ -110,6 +110,10 @@ In order to check an older version of a file:
 
 	# delete the last commit
 	git reset --hard HEAD~1
+
+	# abandon all local changes
+	git fetch origin
+	git reset --hard origin/master
 
 ####Branch
 

@@ -16,6 +16,7 @@ In Ubuntu, it is super easy to install and set up Git. Bascially, just follow th
 	git config --global color.ui auto
 	git config --global core.editor subl # set default editor
 	git config --global core.excludesfile ~/.gitignore_global
+	git config --global credential.helper 'cache --timeout=10000000' # if you do not want to type password everytime.
 
 I put the following things in the `~/.gitignore_global` file:
 

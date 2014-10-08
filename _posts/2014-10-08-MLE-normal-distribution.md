@@ -11,7 +11,7 @@ f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
 \]`
 
 
-Support we have the following \emph{n i.i.d} observations: `\(x_{1},x_{2},\dots,x_{n}\)`.
+Support we have the following *n i.i.d* observations: `\(x_{1},x_{2},\dots,x_{n}\)`.
 Because they are independent, the probability that we have observed
 these data are:
 `\[
@@ -25,7 +25,7 @@ f(x_{1},x_{2},\dots,x_{n}|\sigma,\mu)=\prod_{i=1}^{n}\frac{1}{\sigma\sqrt{2\pi}}
  & =-\frac{n}{2}\log(2\pi)-n\log\sigma-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(x_{i}-\mu)^{2}
 \end{array}\]`
 
-Let's call `\(\log(f(x_{1},x_{2},\dots,x_{n}|\sigma,\mu))$ as $\mathcal{L},\)`
+Let's call `\(\log(f(x_{1},x_{2},\dots,x_{n}|\sigma,\mu))\)` as `\(\mathcal{L},\)`
 then let:
 `\[
 \frac{d\mathcal{L}}{d\mu}=-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(x_{i}-\mu)^{2}\mid_{\mu}=0
@@ -35,7 +35,7 @@ then let:
 \frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(2\hat{\mu}-2x_{i})=0
 \]`
 
-
+Because `\(\sigma^{2}\)` should be larger than zero,
 `\[
 \hat{\mu}=\frac{\sum_{i=1}^{n}x_{i}}{n}
 \]`

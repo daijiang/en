@@ -81,7 +81,7 @@ E(\hat{\sigma}^{2}) & =\frac{1}{n}E(\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2})\\
 
 
 Bias is `\(E(\sigma^{2})-\sigma^{2}=-\frac{\sigma^{2}}{n}\)`. In fact the unbiased estimator of
-`\(\sigma^{2}=s^{2}=\frac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n-1}\)`.
+`\(\sigma^{2}\)` is `\(s^{2}=\frac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n-1}\)`.
 But the fact that `\(s^{2}\)` is unbiased does not imply that `\(s\)` is
 unbiased for estimating `\(\sigma\)`. The expected value of the square
 root is not the square root of the expected value. Fortunately, the

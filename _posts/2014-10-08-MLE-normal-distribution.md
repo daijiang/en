@@ -65,8 +65,7 @@ We know that
 \sigma^{2}=Var(X)=E(X^{2})-(E(X))^{2}\Rightarrow E(X^{2})=Var(X)+(E(X))^{2}
 \]`
 
-
-The MLE of `\(\sigma^{2}\)` is `\(\hat{\sigma}^{2}.\)` 
+Then
 `\[
 \begin{array}{cl}
 E(\hat{\sigma}^{2}) & =\frac{1}{n}E(\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2})\\
@@ -78,10 +77,10 @@ E(\hat{\sigma}^{2}) & =\frac{1}{n}E(\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2})\\
  & =\frac{n-1}{n}\sigma^{2}\\
  & \neq\sigma^{2}
 \end{array}
-`\]
+\]`
 
 
-Bias is `\(-\frac{\sigma^{2}}{n}\)`. In fact the unbiased estimator of
+Bias is `\(E(\sigma^{2})-\sigma^{2}=-\frac{\sigma^{2}}{n}\)`. In fact the unbiased estimator of
 `\(\sigma^{2}=s^{2}=\frac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n-1}\)`.
 But the fact that `\(s^{2}\)` is unbiased does not imply that `\(s\)` is
 unbiased for estimating `\(\sigma\)`. The expected value of the square

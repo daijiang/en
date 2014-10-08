@@ -16,6 +16,7 @@ In Ubuntu, it is super easy to install and set up Git. Bascially, just follow th
 	git config --global color.ui auto
 	git config --global core.editor subl # set default editor
 	git config --global core.excludesfile ~/.gitignore_global
+	git config --global credential.helper 'cache --timeout=10000000' # if you do not want to type password everytime.
 
 I put the following things in the `~/.gitignore_global` file:
 
@@ -99,7 +100,7 @@ In order to check an older version of a file:
 
 ####Undo actions
 
-	git checkout -- file.name # undo the modification in file.name
+	git checkout -- file.name # undo the modification in file.name (unstaged)
 	
 	git reset HEAD filename # unstage file
 	
@@ -110,6 +111,10 @@ In order to check an older version of a file:
 
 	# delete the last commit
 	git reset --hard HEAD~1
+
+	# abandon all local changes
+	git fetch origin
+	git reset --hard origin/master
 
 ####Branch
 
@@ -151,7 +156,9 @@ You can simply use `git pull` to update your local project from Github. If you c
 
 #### Push to Github
 
-Go to [github](https://github.com/), login, create a new repository, and follow their instruction.	 
+Go to [github](https://github.com/), login, create a new repository, and follow their instruction.	
+
+If you want to use SSH key when you push things to github, see [here](https://help.github.com/articles/generating-ssh-keys). Then you need change the url of your local repository, following [this page](https://help.github.com/articles/changing-a-remote-s-url). 
 
 ## Reference
 

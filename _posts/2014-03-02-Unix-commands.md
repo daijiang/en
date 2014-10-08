@@ -18,7 +18,7 @@ Here is a list of the most basic commands in Unix from my learning notes.
 + `.` means current directory.
 + `..` means one level up of current directory, i.e. parent directory.
 + `~` is the shortcut of the home directory. e.g. `cd ~`, same effect as `cd`; `~/data` equals with `/home/user/data`
-+ `$` the command line is ready.
++ `$` the command line is ready. Also, if you want to use the value of a variable in a command, precede its name by `$`, e.g. `echo $PATH`.
 + `#` comments, things after this will be ignored.
 + `cd Documents` to change to the Documents sub-folder.
 + `cd` to change to your home directory.
@@ -30,11 +30,12 @@ Here is a list of the most basic commands in Unix from my learning notes.
 + `ls -l` reveal where a symlink points and permission info. e.g. Docs -> Documents in the above example. `-S` sort files by size, `-F` means flag, add / at the end of directories. `-R` lists the contents of directories recursively.
 + `ls /bin/*[ab]* ` list all files in /bin that contain the letter a or b. It is equal with `ls /bin/*a* /bin/*b*`.
 + `ls *.[cho]` = `ls *.{c,h,o}`, list all files with .c, .h, .o in current directory.
-+ `echo b{ed,olt,ar}s`, print beds, bolts, bars.
++ `echo b{ed,olt,ar}s`, print beds, bolts, bars. `echo {2..5}` will print 2,3,4,5. `echo {d..h}` will print d,e,f,g,h.
 + `man command` to check what a command does. e.g. `man ls`. Press `q` to quit. `man` use `less` internal, so you can use `/` to search for something.
 + `history` to check all command used.
 + `!220` to rerun the 220th command from history
 + `|` is used for piping, i.e. use output of one command as input of another. e.g. `wc -l file1 file2 | sort | head -1` counts lines of file, then sorts the lines then print the first line of the result.
+	* sometimes the command you want to pipe does not work. For example, `find . -name '*.c' | rm` won't work since `rm` only takes its filenames as arguments or parameters on the command line. We need to use `rm $(find . -name '*.c')` to get it work. `$()` encloses a command that is run in a subshell, the output for that command is substituted in place of the `$()` phrase. Some old syntax also use backticks to do the trick.
 + `Ctrl+d` will send "end of file' and will often terminate the shell.
 + `ls /bin/*sh` will list all shells available.
 + `df -h` to get the disk of file system used (short of disk free?), `-h` means return human readable numbers, e.g. 100Mb. 100Gb.
@@ -46,6 +47,9 @@ Here is a list of the most basic commands in Unix from my learning notes.
 + `uname -a` print the system information.
 + `lsb_release -a` print Linux standard base distribution-specific information.
 + `finger` to check users inthe system. You may need to install finger first.
++ `'` strong quote,  e.g. `echo '2 * 3 > 5 is a valid inequality'`. No characters in single quote will be interpreted. When in doubt, use single quote unless a string contains a variable, in which case you should use double quotes.
++ `"` week quote, some characters will still be interpreted within double quote, e.g. `$` within `echo "$PATH"`. In this case the varaible PATH was evaluated.
++ `\` backslash-escaping the character (i.e. quote it). e.g. `echo 2 \* 3 \> 5 is a valid inequality`. If you put it at the end of a line, it means that the line continues.
 
 
 ## File related commands
@@ -115,8 +119,12 @@ If file names have space in some of them, put `$filename` in quote to avoid prob
 + `^` means `Ctrl` key, e.g. `^A` means `Ctrl+A`.
 + `^A` move to the beginning of a line in the shell.
 + `^E` move to the end of a line.
-+ `^C` cancel what you are doing.
++ `^C` cancel what you are doing. If it does not work, try `^\`.
++ `^D` end of a line.
 + `^L` clean the screen of your shell.
++ `^h` delete back one character (backspace).
++ `^w` delete back one word.
++ `^u` delete back to the start of line.
  
 
 ##Shell scripts
@@ -137,7 +145,7 @@ Example: put `head -20 file.txt | tail -5` in a file *command.sh*; put `head $2 
 + `ssh -Y user@server` to connect a remote server.
 
 ## Alias
-You can define a shortcut for some long cryptic commands by using alias: (NO space on either side of the equal sign.)
+You can define a shortcut for some long cryptic commands by using alias: (NO space on either side of the equal sign. This rule also applies for variables, `varname=value` you can delete it with `unset varname`.)
 
 	`alias name=command`
 	`alias` get the list of alias you defined. 
@@ -148,9 +156,9 @@ You can define a shortcut for some long cryptic commands by using alias: (NO spa
 + `echo $GDMSESSION` check the OS info. In my machine, it returns *Lubuntu*.
 + `echo $XDG_CURRENT_DESKTOP` check the desktop window manager. My is *LXDE*.
 + `sudo pkill -u username` to force log out.
++ `.bash_profile` is used for login shell, while `.bashrc` is used for sub-shell, i.e. run from `bash` command. If you put your definitions in `.bashrc` you need to put `source .bashrc` in your `.bash_profile` to make them available for login shell.
++ `$@` is equal to `"$1"`, `"$2"`, ..., `"$N"` where N is the number of positional parameters. If there are no positional parameters, it expands to nothing. `$#` will tell you how many parameters you have.
 
-
-More later. 2014-04-21.
 
 ##Reference
 

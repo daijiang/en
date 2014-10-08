@@ -147,6 +147,7 @@ You can define a shortcut for some long cryptic commands by using alias: (NO spa
 + `sudo apt-get install --only-upgrade r-base-dev` to upgrade (only) R to the latest version.
 + `echo $GDMSESSION` check the OS info. In my machine, it returns *Lubuntu*.
 + `echo $XDG_CURRENT_DESKTOP` check the desktop window manager. My is *LXDE*.
++ `sudo pkill -u username` to force log out.
 
 
 More later. 2014-04-21.

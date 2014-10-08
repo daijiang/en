@@ -53,3 +53,38 @@ of `\(\sigma^{2}\)` instead of `\(\sigma\)`. Thus
 `\[
 \hat{\sigma}^{2}=\frac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n}
 \]`
+
+
+But this MLE of `\(\sigma^{2}\)` is biased. A point estimateor `\(\hat{\theta}\)` is said to be an unbiased estimator
+of `\(\theta\)` is `\(E(\hat{\theta})=\theta\)` for every possible value
+of `\(\theta\)`. If `\(\hat{\theta}\)` is not unbiased, the difference `\(E(\hat{\theta})-\theta\)`is
+called the bias of `\(\hat{\theta}\)`.
+
+We know that 
+`\[
+\sigma^{2}=Var(X)=E(X^{2})-(E(X))^{2}\Rightarrow E(X^{2})=Var(X)+(E(X))^{2}
+\]`
+
+
+The MLE of `\(\sigma^{2}\)` is `\(\hat{\sigma}^{2}.\)` 
+`\[
+\begin{array}{cl}
+E(\hat{\sigma}^{2}) & =\frac{1}{n}E(\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2})\\
+ & =\frac{1}{n}E(\sum x_{i}^{2}-n\hat{\mu}^{2})\\
+ & =\frac{1}{n}E(\sum x_{i}^{2}-\frac{(\sum x_{i})^{2}}{n})\\
+ & =\frac{1}{n}\left\{ \sum E(x_{i}^{2})-\frac{1}{n}E\left[(\sum x_{i})^{2}\right]\right\} \\
+ & =\frac{1}{n}\left\{ \sum(\sigma^{2}+\mu^{2})-\frac{1}{n}\left[n\sigma^{2}+(n\mu)^{2}\right]\right\} \\
+ & =\frac{1}{n}\left\{ n\sigma^{2}+n\mu^{2}-\sigma^{2}-n\mu^{2}\right\} \\
+ & =\frac{n-1}{n}\sigma^{2}\\
+ & \neq\sigma^{2}
+\end{array}
+`\]
+
+
+Bias is `\(-\frac{\sigma^{2}}{n}\)`. In fact the unbiased estimator of
+`\(\sigma^{2}=s^{2}=\frac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n-1}\)`.
+But the fact that `\(s^{2}\)` is unbiased does not imply that `\(s\)` is
+unbiased for estimating `\(\sigma\)`. The expected value of the square
+root is not the square root of the expected value. Fortunately, the
+biase of `\(s\)` is small unless the sample size is very small. Thus
+there are good reasons to use `\(s\)` as an estimator of `\(\sigma\)`.

@@ -6,7 +6,7 @@ tags: [r, home work]
 ---
 >I do not know too much about picture compression. There must be better ways/packages to do this. This small project is just for fun.
 
-First, here is a function to blur a picture. It will use the center value of a submatrix as value for each cell of that submatrix.
+First, here is a function to blur a picture. It will use the mean value of all cells in a submatrix as value for each cell of that submatrix.
 
 {% highlight r%}
 library(png)

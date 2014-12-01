@@ -30,7 +30,7 @@ Here is just my note about R functions that I do not know/remember for strings h
 + `toupper()`: convert to upper case
 + `casefold()`: case folding
 + `chartr()`: character translation
-+ abbreviate()`: abbreviation
++ `abbreviate()`: abbreviation
 + `substring()`: substrings of a character vector
 + `substr()`: substrings of a character vector
 
@@ -79,6 +79,7 @@ Here is just my note about R functions that I do not know/remember for strings h
 + `)`: the closing round bracket.  Esape in R by  `\\)`
 
 ## `stringr` package is a must have one
+
 
 ## Examples
 

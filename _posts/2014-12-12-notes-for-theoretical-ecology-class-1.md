@@ -2,7 +2,7 @@
 layout: post
 title:  Notes for Zoo 540 Theoretical ecology (Part I)
 categories: [notes]
-tags: []
+tags: [notes, R, ecology]
 ---
 
 >Simulation is critical to understand what your methods are doing! Try to simulate your dataset before doing any statistical analysis.
@@ -14,23 +14,23 @@ The data have presence/absence of four bird species at 117 route. Each route has
 It is alway a good idea to simulate your dataset first before do statistical analysis. Here, we choose species `WITU`, wild turkey as an example. (code from Tony Ives) The key info here is how to do a compund distribution simulation.
 
 
-{% highlight r%}
+```r
 d  # the dataset in long table form: each row is an observation
 w  # aggregated at each route, using `FUN = mean`.
-# I decided I wanted to generate data that had the appropriate variability
-# in counts per ROUTE. This variability can be seen in the following
-# histogram.
+# I decided I wanted to generate data that had the appropriate
+# variability in counts per ROUTE. This variability can be seen in the
+# following histogram.
 hist(w$WITU)
 
-# As a first attempt, assume that each observation at each STATION is random
-# and independent of all other stations, including those stations in the
-# same ROUTE. The mean number of observation (presences) across all STATIONs
-# is
+# As a first attempt, assume that each observation at each STATION is
+# random and independent of all other stations, including those
+# stations in the same ROUTE. The mean number of observation
+# (presences) across all STATIONs is
 mWITU <- mean(d$WITU)
 
-# Therefore, I produced a data set that has the same structure as d in which
-# WITU is selected from a binomial distribution with probability = mWITU and
-# size = 1 (size is the number of trials).
+# Therefore, I produced a data set that has the same structure as d in
+# which WITU is selected from a binomial distribution with probability
+# = mWITU and size = 1 (size is the number of trials).
 
 sim.d <- subset(d, select = ROUTE:Y_NAD83)
 sim.d$WITU <- rbinom(n = dim(d)[1], size = 1, prob = mWITU)
@@ -40,20 +40,21 @@ sim.w <- data.frame(aggregate(cbind(sim.d$WITU, sim.d$X_NAD83, sim.d$Y_NAD83),
     by = list(sim.d$ROUTE), FUN = "mean"))
 names(sim.w) <- c("ROUTE", "WITU", "X_NAD83", "Y_NAD83")
 
-# Finally, I compare the distributions. Run this code (starting with the
-# subset() function above) several times to convince yourself these
+# Finally, I compare the distributions. Run this code (starting with
+# the subset() function above) several times to convince yourself these
 # distributions are different.
 op = par(mfrow = c(2, 1))
 hist(w$WITU)
 hist(sim.w$WITU)
 
-# Because there is more variation in the data than in the first simulation,
-# I decided to assume that ROUTEs had different probabilities of WITU being
-# observed in STATIONs. Specifically, for each ROUTE, I assumed that the
-# probability of a WITU being observed at a station was prob, and that prob
-# is distributed according to an exponential distribution among ROUTEs.
-# This is an example of a compund distribution: the probability from a
-# binomial distribution is itself described by an exponential distribution.
+## Because there is more variation in the data than in the first
+## simulation, I decided to assume that ROUTEs had different
+## probabilities of WITU being observed in STATIONs. Specifically, for
+## each ROUTE, I assumed that the probability of a WITU being observed
+## at a station was prob, and that prob is distributed according to an
+## exponential distribution among ROUTEs.  This is an example of a
+## compund distribution: the probability from a binomial distribution is
+## itself described by an exponential distribution.
 
 sim.d <- subset(d, select = ROUTE:Y_NAD83)
 
@@ -73,36 +74,35 @@ sim.d <- subset(d, select = ROUTE:DATE)
 for (route in levels(sim.d$ROUTE)) {
     n <- sum(sim.d$ROUTE == route)
     prob.route <- rbeta(n = 1, shape1 = shape1, shape2 = shape2)
-    sim.d$RUGR[sim.d$ROUTE == route] <- rbinom(n = n, size = 1, 
-                                               prob = prob.route)
+    sim.d$RUGR[sim.d$ROUTE == route] <- rbinom(n = n, size = 1, prob = prob.route)
 }
 
-# Again, I generate sim.w like w, although I've also added a column for the
-# value of prob from each ROUTE and called it route.mean.
+# Again, I generate sim.w like w, although I've also added a column for
+# the value of prob from each ROUTE and called it route.mean.
 sim.w <- data.frame(aggregate(cbind(sim.d$WITU, sim.d$X_NAD83, sim.d$Y_NAD83, 
     sim.d$route.mean), by = list(sim.d$ROUTE), FUN = "mean"))
 names(sim.w) <- c("ROUTE", "WITU", "X_NAD83", "Y_NAD83", "route.mean")
 
-# Run this a few times to convince yourself that the simulations do a pretty
-# good job reproducing the data
+# Run this a few times to convince yourself that the simulations do a
+# pretty good job reproducing the data
 op = par(mfrow = c(3, 1))
 hist(w$WITU)
 hist(sim.w$WITU)
 hist(sim.w$route.mean)
 
-# for betabinomial distribution, we can also estimate the MLL of prob first,
-# then simulate the data
+# for betabinomial distribution, we can also estimate the MLL of prob
+# first, then simulate the data
 
-# Probability distribution function for a betabinomial distribution modified
-# from the library 'emdbook'
+# Probability distribution function for a betabinomial distribution
+# modified from the library 'emdbook'
 dbetabinom <- function(y, prob, size, theta, shape1, shape2, log = FALSE) {
     if (missing(prob) && !missing(shape1) && !missing(shape2)) {
         prob <- shape1/(shape1 + shape2)
         theta <- shape1 + shape2
     }
     v <- lfactorial(size) - lfactorial(y) - lfactorial(size - y) - lbeta(theta * 
-        (1 - prob), theta * prob) + lbeta(size - y + theta * (1 - prob), y + 
-        theta * prob)
+        (1 - prob), theta * prob) + lbeta(size - y + theta * (1 - prob), 
+        y + theta * prob)
     if (sum((y%%1) != 0) != 0) {
         warning("non-integer x detected; returning zero probability")
         v[n] <- -Inf
@@ -112,8 +112,8 @@ dbetabinom <- function(y, prob, size, theta, shape1, shape2, log = FALSE) {
 }
 
 # Log-likelihood function for the betabinomial given data Y (vector of
-# successes) and Size (vector of number of trials) in terms of parameters
-# prob and theta
+# successes) and Size (vector of number of trials) in terms of
+# parameters prob and theta
 dbetabinom_LLF <- function(parameters, Y, Size) {
     prob <- parameters[1]
     theta <- parameters[2]
@@ -122,8 +122,8 @@ dbetabinom_LLF <- function(parameters, Y, Size) {
 
 LLestimates <- optim(fn = dbetabinom_LLF, par = c(prob = 0.2, theta = 0.5), 
     Y = w$OBS, Size = w$STATIONS, method = "BFGS")
-# w$OBS : how many birds observed in all stations from one route w$STATIONS:
-# 8 stations / route.
+# w$OBS : how many birds observed in all stations from one route
+# w$STATIONS: 8 stations / route.
 LLestimates
 # $par prob 0.177216
 
@@ -142,8 +142,8 @@ for (route in levels(sim.d$ROUTE)) {
 ## Or we can even include envi variales.
 
 # Log-likelihood function for the betabinomial given data Y (vector of
-# successes), Size (vector of number of trials), and independent variable X
-# (WINDSPEEDSQR) in terms of parameters prob and theta
+# successes), Size (vector of number of trials), and independent
+# variable X (WINDSPEEDSQR) in terms of parameters prob and theta
 dbetabinom_LLF <- function(parameters, Y, Size, X) {
     theta <- parameters[1]
     b0 <- parameters[2]
@@ -154,9 +154,8 @@ dbetabinom_LLF <- function(parameters, Y, Size, X) {
     -sum(dbetabinom(y = Y, size = Size, prob = prob, theta = theta, log = TRUE))
 }
 
-LLe <- optim(fn = dbetabinom_LLF, par = c(theta = 0.5, b0 = 1, b1 = -0.5),
-     Y = w$OBS, 
-    Size = w$STATIONS, X = w$WINDSPEEDSQR, method = "BFGS")
+LLe <- optim(fn = dbetabinom_LLF, par = c(theta = 0.5, b0 = 1, b1 = -0.5), 
+    Y = w$OBS, Size = w$STATIONS, X = w$WINDSPEEDSQR, method = "BFGS")
 LLe
 # $par theta b0 b1 5.6803877 -3.7789926 -0.3007611
 
@@ -175,15 +174,15 @@ for (route in levels(sim.d$ROUTE)) {
     shape2 <- (1 - p) * theta
     n <- sum(sim.d$ROUTE == route)
     prob.route <- rbeta(n = 1, shape1 = shape1, shape2 = shape2)
-    sim.d$RUGR[sim.d$ROUTE == route] <- rbinom(n = n, size = 1, 
-                                               prob = prob.route)
+    sim.d$RUGR[sim.d$ROUTE == route] <- rbinom(n = n, size = 1, prob = prob.route)
 }
 
 # Compute statistical significant of H0:b1=0 (effect of WINDSPEEDSQR)
 
 # Log-likelihood function for the betabinomial given data Y (vector of
-# successes), Size (vector of number of trials), and independent variable X
-# (WINDSPEEDSQR) with b1 = 0 in terms of parameters prob and theta
+# successes), Size (vector of number of trials), and independent
+# variable X (WINDSPEEDSQR) with b1 = 0 in terms of parameters prob and
+# theta
 dbetabinom_LLF <- function(parameters, Y, Size, X) {
     theta <- parameters[1]
     b0 <- parameters[2]
@@ -201,26 +200,26 @@ c(LLe$value, LLe0$value)
 # [1] 179.9093 181.9467 negative likelihood
 pchisq(2 * (LLe0$value - LLe$value), df = 1, lower.tail = FALSE)
 # 0.04352663
-{% endhighlight %}
+```
 
 ## Maximum likelihood
 
-{% highlight r%}
+```r
 # Likelihood function for a Bernouli process generate data
 n <- 10
 p <- 0.8
 set.seed(123)
 xi <- rbinom(n = n, size = 1, prob = p)
 
-L <- function(pp) apply(X = array(pp), MARGIN = 1, 
-    FUN = function(ppp) prod(xi * ppp + (1 - xi) * (1 - ppp)))
-LL <- function(pp) apply(X = array(pp), MARGIN = 1, 
-FUN = function(ppp) sum(log(xi * ppp + (1 - xi) * (1 - ppp))))
+L <- function(pp) apply(X = array(pp), MARGIN = 1, FUN = function(ppp) prod(xi * 
+    ppp + (1 - xi) * (1 - ppp)))
+LL <- function(pp) apply(X = array(pp), MARGIN = 1, FUN = function(ppp) sum(log(xi * 
+    ppp + (1 - xi) * (1 - ppp))))
 
 par(mfrow = c(1, 1), lwd = 2, bty = "l", las = 1, cex = 1.5)
-curve(L, from = 0, to = 1, main = paste("p = ", p, "mean(x) = ", 
-    mean(xi), " n = ", n))
-{% endhighlight %}
+curve(L, from = 0, to = 1, main = paste("p = ", p, "mean(x) = ", mean(xi), 
+    " n = ", n))
+```
 
 ![plot of chunk unnamed-chunk-2](http://i.imgur.com/aj99JQI.png) 
 
@@ -231,7 +230,7 @@ How do you calculate confident interval? In basic statistical classes, we were t
 
 The general way works like this, using binomal distribution as an example: we know the mean proportion of success in the data as `p_hat = x/n`. Then we propose a `prob` value, say 0.3, then we simulate `n` numbers from a binomial distribution with "true" propbability `prob = 0.3`. We then can calculate the propbability  that `p_hat` generated the simulated values using the simulated distribution. If this value is less than 0.025, then the `prob` value proposed is not within the 95% confident interval of the true probability of our acutual data. Repeat this procedures... Probably just look at the code:
 
-{% highlight r%}
+```r
 # Confidence intervals for a Bernouli process generate data
 n <- 100
 p <- 0.5
@@ -244,24 +243,24 @@ p_hat <- mean(xi)
 op = par(mfrow = c(1, 1), lwd = 2, bty = "l", las = 1, cex = 1.5)
 
 lower_cum <- function(p_est, pp, n) pbinom(q = p_est * n - 1, size = n, 
-                                            prob = pp)
-upper_cum <- function(p_est, pp, n) 1 - pbinom(q = p_est * n, size = n,
-                                            prob = pp)
+    prob = pp)
+upper_cum <- function(p_est, pp, n) 1 - pbinom(q = p_est * n, size = n, 
+    prob = pp)
 
 pp <- 0.3
 W <- function(pp, n) cbind((0:n)/n, dbinom(x = 0:n, size = n, prob = pp))
 plot(W(pp, n), type = "h", main = paste("p=", pp, "p_hat=", p_hat, "lower=", 
-    0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 0.001 * 
-    round(1000 * upper_cum(p_hat, pp, n))), xlab = "estimate", 
-    ylab = "probability")
+    0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 0.001 * round(1000 * 
+        upper_cum(p_hat, pp, n))), xlab = "estimate", ylab = "probability")
 points(p_hat, 0, col = "red")
-{% endhighlight %}
+```
 
 ![plot of chunk unnamed-chunk-3](http://i.imgur.com/OxiK42C.png) 
+
 In this case, 0.3 is not within the 95% CI of `p_hat`.
 
 
-{% highlight r%}
+```r
 # Confidence intervals for a Bernouli process generate data
 n <- 100
 p <- 0.5
@@ -274,24 +273,24 @@ p_hat <- mean(xi)
 op = par(mfrow = c(1, 1), lwd = 2, bty = "l", las = 1, cex = 1.5)
 
 lower_cum <- function(p_est, pp, n) pbinom(q = p_est * n - 1, size = n, 
-                                            prob = pp)
-upper_cum <- function(p_est, pp, n) 1 - pbinom(q = p_est * n, size = n,
-                                               prob = pp)
+    prob = pp)
+upper_cum <- function(p_est, pp, n) 1 - pbinom(q = p_est * n, size = n, 
+    prob = pp)
 
 pp <- 0.6
 W <- function(pp, n) cbind((0:n)/n, dbinom(x = 0:n, size = n, prob = pp))
 plot(W(pp, n), type = "h", main = paste("p=", pp, "p_hat=", p_hat, "lower=", 
-    0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 0.001 * 
-    round(1000 * upper_cum(p_hat, pp, n))), xlab = "estimate", 
-    ylab = "probability")
+    0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 0.001 * round(1000 * 
+        upper_cum(p_hat, pp, n))), xlab = "estimate", ylab = "probability")
 points(p_hat, 0, col = "red")
-{% endhighlight %}
+```
 
 ![plot of chunk unnamed-chunk-4](http://i.imgur.com/eIrYaIF.png) 
+
 In this case, 0.6 is within the 95% CI. Repeat this procedure, we can get the 95% CI for `p_hat`.
 
 
-{% highlight r%}
+```r
 # numerically find confidence intervals
 alpha <- 0.05
 
@@ -303,21 +302,23 @@ lower_alpha <- optim(p_hat, toMin_upper)$par
 
 par(mfrow = c(1, 2))
 pp <- upper_alpha
-plot(W(pp, n), type = "h", main = paste("p=", 0.001 * round(1000 * pp), "lower=", 
-    0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 0.001 * round(1000 * 
-        upper_cum(p_hat, pp, n))), xlab = "estimate", ylab = "probability")
+plot(W(pp, n), type = "h", main = paste("p=", 0.001 * round(1000 * pp), 
+    "lower=", 0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 
+    0.001 * round(1000 * upper_cum(p_hat, pp, n))), xlab = "estimate", 
+    ylab = "probability")
 points(p_hat, 0, col = "red")
 
 pp <- lower_alpha
-plot(W(pp, n), type = "h", main = paste("p=", 0.001 * round(1000 * pp), "lower=", 
-    0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 0.001 * round(1000 * 
-        upper_cum(p_hat, pp, n))), xlab = "estimate", ylab = "probability")
+plot(W(pp, n), type = "h", main = paste("p=", 0.001 * round(1000 * pp), 
+    "lower=", 0.001 * round(1000 * lower_cum(p_hat, pp, n)), "upper=", 
+    0.001 * round(1000 * upper_cum(p_hat, pp, n))), xlab = "estimate", 
+    ylab = "probability")
 points(p_hat, 0, col = "red")
-{% endhighlight %}
+```
 
 ![plot of chunk unnamed-chunk-5](http://i.imgur.com/s0e1Lwi.png) 
 
-{% highlight r%}
+```r
 # Test confidence intervals
 n <- 500
 p_true <- 0.7
@@ -341,28 +342,29 @@ for (expt in 1:nexpts) {
         upperbound <- upper_alpha$par
         upperconverge <- upper_alpha$value > 10^-4
     }
-   countOutside[expt, ] <- c(p_true <= lowerbound, p_true >= upperbound, lowerbound, 
-        upperbound, lowerconverge, upperconverge)
+    
+    countOutside[expt, ] <- c(p_true <= lowerbound, p_true >= upperbound, 
+        lowerbound, upperbound, lowerconverge, upperconverge)
 }
 c(mean(countOutside[countOutside[, 5] == 0, 1]), mean(countOutside[countOutside[, 
     6] == 0, 2]))
-{% endhighlight %}
+```
 
 ```
 ## [1] 0.022 0.030
 ```
 
-{% highlight r%}
+```r
 colMeans(countOutside)
-{% endhighlight %}
+```
 
 ```
 ## [1] 0.0220 0.0300 0.6597 0.7378 0.0000 0.0000
 ```
 
-{% highlight r%}
+```r
 head(countOutside, n = 10)
-{% endhighlight %}
+```
 
 ```
 ##       [,1] [,2]   [,3]   [,4] [,5] [,6]
@@ -391,7 +393,7 @@ Goal: Estimating the effect of `WINDSPEEDSQR` on observations of `RUGR`. There a
 **Note**: Always use `quasibinomial` or `quasipoisson` got GLMs. In GLMM, `(1|id)` will allow the variation to be larger than the distribution allowed, i.e. similar as `quasibinomial` or `quasipoisson` and it will be like the residuals in the linear regression, absorbing all remaining unexplained variations.
 
 
-{% highlight r%}
+```r
 ## (i) a likelihood ratio test Probability distribution function for a
 ## betabinomial distribution from the library 'emdbook'
 dbetabinom <- function(y, prob, size, theta, shape1, shape2, log = FALSE) {
@@ -411,8 +413,8 @@ dbetabinom <- function(y, prob, size, theta, shape1, shape2, log = FALSE) {
 }
 
 # Log-likelihood function for the betabinomial given data Y (vector of
-# successes), Size (vector of number of trials), and independent variable X
-# (WINDSPEEDSQR) in terms of parameters prob and theta
+# successes), Size (vector of number of trials), and independent
+# variable X (WINDSPEEDSQR) in terms of parameters prob and theta
 dbetabinom_LLF <- function(parameters, Y, Size, X) {
     theta <- parameters[1]
     b0 <- parameters[2]
@@ -423,14 +425,15 @@ dbetabinom_LLF <- function(parameters, Y, Size, X) {
     -sum(dbetabinom(y = Y, size = Size, prob = prob, theta = theta, log = TRUE))
 }
 
-LLe <- optim(fn = dbetabinom_LLF, par = c(theta = 0.5, b0 = 1, b1 = 0.5), Y = w$OBS, 
-    Size = w$STATIONS, X = w$WINDSPEEDSQR, method = "BFGS")
+LLe <- optim(fn = dbetabinom_LLF, par = c(theta = 0.5, b0 = 1, b1 = 0.5), 
+    Y = w$OBS, Size = w$STATIONS, X = w$WINDSPEEDSQR, method = "BFGS")
 
 # Compute statistical significant of H0:b1=0 (effect of WINDSPEEDSQR)
 
 # Log-likelihood function for the betabinomial given data Y (vector of
-# successes), Size (vector of number of trials), and independent variable X
-# (WINDSPEEDSQR) with b1 = 0 in terms of parameters prob and theta
+# successes), Size (vector of number of trials), and independent
+# variable X (WINDSPEEDSQR) with b1 = 0 in terms of parameters prob and
+# theta
 dbetabinom_LLF0 <- function(parameters, Y, Size, X) {
     theta <- parameters[1]
     b0 <- parameters[2]
@@ -448,8 +451,8 @@ c(LLe$value, LLe0$value)
 pchisq(2 * (LLe0$value - LLe$value), df = 1, lower.tail = FALSE)
 
 
-## (ii) LMM for the presence of RUGR at stations (ignoring the binary nature
-## of the data)
+## (ii) LMM for the presence of RUGR at stations (ignoring the binary
+## nature of the data)
 library(lme4)
 # Make variable in d for mean WINDSPEEDSQR (to give a fair comparison
 # between methods at the station vs. route levels)
@@ -462,8 +465,8 @@ library(car)
 Anova(lmer(RUGR ~ WINDSPEEDSQR + (1 | ROUTE), data = d))
 Anova(lmer(RUGR ~ meanWINDSPEEDSQR + (1 | ROUTE), data = d))
 
-## (iii) LMM for the number of observations per route (arcsine square-root
-## transformed)
+## (iii) LMM for the number of observations per route (arcsine
+## square-root transformed)
 w$tOBS <- asin((w$OBS/w$STATIONS))^(0.5)
 summary(lm(tOBS ~ WINDSPEEDSQR, data = w))
 
@@ -480,7 +483,8 @@ summary(glm(cbind(OBS, STATIONS - OBS) ~ WINDSPEEDSQR, family = "quasibinomial",
 
 ## (vi) GLMM for the presence of RUGR at stations
 glmer(RUGR ~ meanWINDSPEEDSQR + (1 | ROUTE), family = "binomial", data = d)
-Anova(glmer(RUGR ~ meanWINDSPEEDSQR + (1 | ROUTE), family = "binomial", data = d))
+Anova(glmer(RUGR ~ meanWINDSPEEDSQR + (1 | ROUTE), family = "binomial", 
+    data = d))
 
 id <- as.factor(1:dim(d)[1])
 glmer(RUGR ~ meanWINDSPEEDSQR + (1 | ROUTE) + (1 | id), family = "binomial", 
@@ -508,8 +512,9 @@ for (rep in 1:nreps) {
         sim.w$OBS[w$ROUTE == route] <- rbetabinom(n = 1, size = w$STATIONS[w$ROUTE == 
             route], p = p, theta = theta_true0)
     }
-    sim.LLe <- optim(fn = dbetabinom_LLF, par = c(theta = 0.5, b0 = 1, b1 = 0.5), 
-        Y = sim.w$OBS, Size = sim.w$STATIONS, X = sim.w$WINDSPEEDSQR, method = "BFGS")
+    sim.LLe <- optim(fn = dbetabinom_LLF, par = c(theta = 0.5, b0 = 1, 
+        b1 = 0.5), Y = sim.w$OBS, Size = sim.w$STATIONS, X = sim.w$WINDSPEEDSQR, 
+        method = "BFGS")
     est_b1[rep] <- sim.LLe$par[3]
 }
 
@@ -524,7 +529,7 @@ pvalue.onetailed <- mean(est_b1 < b1_true)
 pvalue.onetailed
 pvalue.twotailed <- 2 * pvalue.onetailed
 pvalue.twotailed
-{% endhighlight %}
+```
 
 ## Hemlock data
 For a group variable, if data in each group only have a small range of values (e.g. clustering data distribution in each group), say group 1 has values from 10-20, group 2 has 20-30, etc. then it is not good to analyze at group level. Instead we should combine all groups together to analyze them. On the other hand, if each group has wide range of data, then it should be fine to analyze at groyp level.

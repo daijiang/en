@@ -8,75 +8,75 @@ tags: [r]
 Here is just my note about R functions that I do not know/remember for strings handling. 
 
 ## Reading tables/text
-+ `read.table()`: main function to read file in table format
-+ `read.csv()`: reads csv files separated by a comma ","
-+ `read.csv2()`: reads csv files separated by a semicolon ";"
-+ `read.delim()`: reads files separated by tabs "\t"
-+ `read.delim2()`: similar to read.delim()
-+ `read.fwf()`: read fixed width format files
-+ `readLines()`:
+`read.table()`: main function to read file in table format  
+`read.csv()`: reads csv files separated by a comma ","  
+`read.csv2()`: reads csv files separated by a semicolon ";"  
+`read.delim()`: reads files separated by tabs "\t"  
+`read.delim2()`: similar to read.delim()  
+`read.fwf()`: read fixed width format files  
+`readLines()`:  
 
 ## Printing
-+ `print()`: generic printing
-+ `noquote()`: print with no quotes
-+ `cat()`: concatenation, it also has `sep=` argument as well as `fill=`.
-+ `format()`: special formats
-+ `toString()`: convert to string
-+ `sprintf()`: printing
+`print()`: generic printing  
+`noquote()`: print with no quotes  
+`cat()`: concatenation, it also has `sep=` argument as well as `fill=`.  
+`format()`: special formats  
+`toString()`: convert to string  
+`sprintf()`: printing  
 
 ## string manipulations
-+ `nchar()`: number of characters
-+ `tolower()`: convert to lower case
-+ `toupper()`: convert to upper case
-+ `casefold()`: case folding
-+ `chartr()`: character translation
-+ `abbreviate()`: abbreviation
-+ `substring()`: substrings of a character vector
-+ `substr()`: substrings of a character vector
+`nchar()`: number of characters  
+`tolower()`: convert to lower case  
+`toupper()`: convert to upper case  
+`casefold()`: case folding  
+`chartr()`: character translation  
+`abbreviate()`: abbreviation  
+`substring()`: substrings of a character vector  
+`substr()`: substrings of a character vector  
 
 ## set operations
-+ `union()`: set union
-+ `intersect()`: intersection
-+ `setdiff()`: set difference
-+ `setequal()`: equal sets
-+ `identical()`: exact equality
-+ `is.element()`: is element
-+ `%in%()`: contains
-+ `sort()`: sorting
-+ `paste(rep())`: repetition
+`union()`: set union  
+`intersect()`: intersection  
+`setdiff()`: set difference  
+`setequal()`: equal sets  
+`identical()`: exact equality  
+`is.element()`: is element  
+`%in%()`: contains  
+`sort()`: sorting  
+`paste(rep())`: repetition  
 
 ## better to know regular expression
-+ `\\d`: match a digit character
-+ `\\D`: match a non-digit character
-+ `\\s`: match a space character
-+ `\\S`: match a non-space character
-+ `\\w`: match a word character
-+ `\\W`: match a non-word character
-+ `\\b`: match a word boundary
-+ `\\B`: match a non-(word boundary)
-+ `\\h`: match a horizontal space
-+ `\\H`: match a non-horizontal space
-+ `\\v`: match a vertical space
-+ `\\V`: match a non-vertical space
+`\\d`: match a digit character  
+`\\D`: match a non-digit character  
+`\\s`: match a space character  
+`\\S`: match a non-space character  
+`\\w`: match a word character  
+`\\W`: match a non-word character  
+`\\b`: match a word boundary  
+`\\B`: match a non-(word boundary)  
+`\\h`: match a horizontal space  
+`\\H`: match a non-horizontal space  
+`\\v`: match a vertical space  
+`\\V`: match a non-vertical space  
 
 `grep()`
 `gsub()`
 
 ### Escaping special characters in R
-+ `.`: the period or dot.           Esape in R by `\\.`
-+ `$`: the dollar sign.             Esape in R by `\\$`
-+ `*`: the asterisk or star.        Esape in R by `\\*`
-+ `+`: the plus sign.               Esape in R by `\\+`
-+ `?`: the question mark.           Esape in R by `\\?`
-+ `|`: the vertical bar.            Esape in R by `\\|`
-+ `\`: the backslash .            Esape in R by  `\\\\`
-+ `^`: the caret.                   Esape in R by `\\^`
-+ `[`: the opening square bracket.  Esape in R by `\\[`
-+ `]`: the closing square bracket.  Esape in R by `\\]`
-+ `{`: the opening curly bracket.  Esape in R by  `\\{`
-+ `}`: the closing curly bracket.  Esape in R by  `\\}`
-+ `(`: the opening round bracket.  Esape in R by  `\\(`
-+ `)`: the closing round bracket.  Esape in R by  `\\)`
+`.`: the period or dot.           Esape in R by `\\.`  
+`$`: the dollar sign.             Esape in R by `\\$`  
+`*`: the asterisk or star.        Esape in R by `\\*`  
+`+`: the plus sign.               Esape in R by `\\+`  
+`?`: the question mark.           Esape in R by `\\?`  
+`|`: the vertical bar.            Esape in R by `\\|`  
+`\`: the backslash .            Esape in R by  `\\\\`  
+`^`: the caret.                   Esape in R by `\\^`  
+`[`: the opening square bracket.  Esape in R by `\\[`  
+`]`: the closing square bracket.  Esape in R by `\\]`  
+`{`: the opening curly bracket.  Esape in R by  `\\{`  
+`}`: the closing curly bracket.  Esape in R by  `\\}`  
+`(`: the opening round bracket.  Esape in R by  `\\(`  
+`)`: the closing round bracket.  Esape in R by  `\\)`  
 
 ## `stringr` package is a must have one
 

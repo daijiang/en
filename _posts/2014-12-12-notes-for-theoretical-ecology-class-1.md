@@ -7,6 +7,8 @@ tags: []
 
 >Simulation is critical to understand what your methods are doing! Try to simulate your dataset before doing any statistical analysis.
 
+>See [here](https://github.com/daijiang/en/blob/gh-pages/_posts/2014-12-12-notes-for-theoretical-ecology-class-1.md) if you want to have better reading experience about the R codes.
+
 ## Grouse data
 The data have presence/absence of four bird species at 117 route. Each route has 8 stations distributed along the 1 mile by 1 mile border evennly. The data also include environmental data at each station, including wind speed, temperature, noise, etc. The question is "what factors are controlling species abundance and distribution?".
 

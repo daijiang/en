@@ -231,7 +231,7 @@ ggplot(dat, aes(x = lec, y = view)) +
 
 ![Imgur](http://i.imgur.com/DtGk7Rt.png)
 
-Wow, the first lecture has 1,456,215 by far! However, the view count of the second lecture is about one million lower than the first one. It will be interesting to find out why lecture 21 and 22 have more view counts than their neighbors (I am getting their, at lecture 14 now!). The last lecture has about 50K views. Does this mean about 50K people finished all lectures? 
+Wow, the first lecture has 1,456,215 by far (2015-06-01-23:00 Central Time)! However, the view count of the second lecture is about one million lower than the first one. It will be interesting to find out why lecture 21 and 22 have more view counts than their neighbors (I am getting their, at lecture 14 now!). The last lecture has about 50K views. Does this mean about 50K people finished all lectures? 
 
 It clearly shows how hard it is to be persistent.
 

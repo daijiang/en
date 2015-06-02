@@ -13,9 +13,6 @@ Alright, first load some R packages in order to get data from Youtube.
 ```r
 library(plyr)
 library(dplyr)
-```
-
-```r
 library(rvest) # for webpage scripting
 library(stringr) # string handling
 library(ggplot2) # plotting
@@ -67,43 +64,44 @@ kable(data.frame(lec = lec_names, view = format(dat$view, big.mark = ",")),
       format = "pandoc")
 ```
 
-  lec  view      
------  ----------
-  1.0  1,456,204 
-  2.0    417,071 
-  3.0    356,448 
-  4.0    301,950 
-  5.0    208,553 
-  6.0    197,066 
-  7.0    150,143 
-  8.0    136,618 
-  9.0    150,266 
- 10.0    131,612 
- 11.0    103,355 
- 12.0     81,386 
- 13.0     76,344 
- 14.0    107,276 
- 15.0     98,546 
- 16.0     95,255 
- 17.0     94,544 
- 18.0     89,055 
- 19.0     78,404 
- 20.0     84,278 
- 21.0    158,118 
- 22.0    108,468 
- 23.0     83,878 
- 24.0     83,326 
- 24.5     35,583 
- 25.0     59,001 
- 26.0     61,812 
- 27.0     57,314 
- 28.0     69,182 
- 29.0     84,635 
- 30.0     98,086 
- 31.0     60,306 
- 32.0     35,670 
- 33.0     55,034 
- 34.0     49,936 
+
+  lec | view      
+----- | ----------
+  1.0 | 1,456,204 
+  2.0 |   417,071 
+  3.0 |   356,448 
+  4.0 |   301,950 
+  5.0 |   208,553 
+  6.0 |   197,066 
+  7.0 |   150,143 
+  8.0 |   136,618 
+  9.0 |   150,266 
+ 10.0 |   131,612 
+ 11.0 |   103,355 
+ 12.0 |    81,386 
+ 13.0 |    76,344 
+ 14.0 |   107,276 
+ 15.0 |    98,546 
+ 16.0 |    95,255 
+ 17.0 |    94,544 
+ 18.0 |    89,055 
+ 19.0 |    78,404 
+ 20.0 |    84,278 
+ 21.0 |   158,118 
+ 22.0 |   108,468 
+ 23.0 |    83,878 
+ 24.0 |    83,326 
+ 24.5 |    35,583 
+ 25.0 |    59,001 
+ 26.0 |    61,812 
+ 27.0 |    57,314 
+ 28.0 |    69,182 
+ 29.0 |    84,635 
+ 30.0 |    98,086 
+ 31.0 |    60,306 
+ 32.0 |    35,670 
+ 33.0 |    55,034 
+ 34.0 |    49,936 
 
 Finally, let's plot it.
 
@@ -120,7 +118,7 @@ ggplot(dat, aes(x = lec, y = view)) +
 
 ![Imgur](http://i.imgur.com/DtGk7Rt.png)
 
-Wow, the first lecture has 1,456,155 by far! However, the view count of the second lecture is about one million lower than the first one. It will be interesting to find out why lecture 21 and 22 have more view counts than their neighbors (I am getting their, at lecture 14 now!). The last lecture has about 50K views. Does this mean about 50K people finished all lectures? 
+Wow, the first lecture has 1,456,204 by far! However, the view count of the second lecture is about one million lower than the first one. It will be interesting to find out why lecture 21 and 22 have more view counts than their neighbors (I am getting their, at lecture 14 now!). The last lecture has about 50K views. Does this mean about 50K people finished all lectures? 
 
 It clearly shows how hard it is to be persistent.
 

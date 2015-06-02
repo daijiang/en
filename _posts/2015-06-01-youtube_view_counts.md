@@ -61,47 +61,160 @@ Now, combine lecture names with their view counts.
 # combine lecture names with view count
 dat = data_frame(lec = lec_names, view = unname(view_all))
 kable(data.frame(lec = lec_names, view = format(dat$view, big.mark = ",")), 
-      format = "pandoc")
+      format = "html")
 ```
 
 
-  lec | view      
------ | ----------
-  1.0 | 1,456,204 
-  2.0 |   417,071 
-  3.0 |   356,448 
-  4.0 |   301,950 
-  5.0 |   208,553 
-  6.0 |   197,066 
-  7.0 |   150,143 
-  8.0 |   136,618 
-  9.0 |   150,266 
- 10.0 |   131,612 
- 11.0 |   103,355 
- 12.0 |    81,386 
- 13.0 |    76,344 
- 14.0 |   107,276 
- 15.0 |    98,546 
- 16.0 |    95,255 
- 17.0 |    94,544 
- 18.0 |    89,055 
- 19.0 |    78,404 
- 20.0 |    84,278 
- 21.0 |   158,118 
- 22.0 |   108,468 
- 23.0 |    83,878 
- 24.0 |    83,326 
- 24.5 |    35,583 
- 25.0 |    59,001 
- 26.0 |    61,812 
- 27.0 |    57,314 
- 28.0 |    69,182 
- 29.0 |    84,635 
- 30.0 |    98,086 
- 31.0 |    60,306 
- 32.0 |    35,670 
- 33.0 |    55,034 
- 34.0 |    49,936 
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> lec </th>
+   <th style="text-align:left;"> view </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1.0 </td>
+   <td style="text-align:left;"> 1,456,215 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2.0 </td>
+   <td style="text-align:left;">   417,073 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:left;">   356,451 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:left;">   301,951 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:left;">   208,554 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6.0 </td>
+   <td style="text-align:left;">   197,069 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7.0 </td>
+   <td style="text-align:left;">   150,147 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8.0 </td>
+   <td style="text-align:left;">   136,619 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9.0 </td>
+   <td style="text-align:left;">   150,267 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10.0 </td>
+   <td style="text-align:left;">   131,614 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11.0 </td>
+   <td style="text-align:left;">   103,357 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12.0 </td>
+   <td style="text-align:left;">    81,389 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13.0 </td>
+   <td style="text-align:left;">    76,344 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 14.0 </td>
+   <td style="text-align:left;">   107,279 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 15.0 </td>
+   <td style="text-align:left;">    98,549 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 16.0 </td>
+   <td style="text-align:left;">    95,258 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17.0 </td>
+   <td style="text-align:left;">    94,545 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 18.0 </td>
+   <td style="text-align:left;">    89,061 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 19.0 </td>
+   <td style="text-align:left;">    78,405 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 20.0 </td>
+   <td style="text-align:left;">    84,280 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 21.0 </td>
+   <td style="text-align:left;">   158,119 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 22.0 </td>
+   <td style="text-align:left;">   108,468 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 23.0 </td>
+   <td style="text-align:left;">    83,880 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 24.0 </td>
+   <td style="text-align:left;">    83,326 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 24.5 </td>
+   <td style="text-align:left;">    35,586 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 25.0 </td>
+   <td style="text-align:left;">    59,001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 26.0 </td>
+   <td style="text-align:left;">    61,814 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 27.0 </td>
+   <td style="text-align:left;">    57,314 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 28.0 </td>
+   <td style="text-align:left;">    69,184 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 29.0 </td>
+   <td style="text-align:left;">    84,635 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 30.0 </td>
+   <td style="text-align:left;">    98,086 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 31.0 </td>
+   <td style="text-align:left;">    60,306 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 32.0 </td>
+   <td style="text-align:left;">    35,670 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 33.0 </td>
+   <td style="text-align:left;">    55,034 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 34.0 </td>
+   <td style="text-align:left;">    49,936 </td>
+  </tr>
+</tbody>
+</table>
 
 Finally, let's plot it.
 
@@ -118,7 +231,7 @@ ggplot(dat, aes(x = lec, y = view)) +
 
 ![Imgur](http://i.imgur.com/DtGk7Rt.png)
 
-Wow, the first lecture has 1,456,204 by far! However, the view count of the second lecture is about one million lower than the first one. It will be interesting to find out why lecture 21 and 22 have more view counts than their neighbors (I am getting their, at lecture 14 now!). The last lecture has about 50K views. Does this mean about 50K people finished all lectures? 
+Wow, the first lecture has 1,456,215 by far! However, the view count of the second lecture is about one million lower than the first one. It will be interesting to find out why lecture 21 and 22 have more view counts than their neighbors (I am getting their, at lecture 14 now!). The last lecture has about 50K views. Does this mean about 50K people finished all lectures? 
 
 It clearly shows how hard it is to be persistent.
 

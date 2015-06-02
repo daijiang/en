@@ -35,7 +35,7 @@ Here is a list of the most basic commands in Unix from my learning notes.
 + `history` to check all command used.
 + `!220` to rerun the 220th command from history
 + `|` is used for piping, i.e. use output of one command as input of another. e.g. `wc -l file1 file2 | sort | head -1` counts lines of file, then sorts the lines then print the first line of the result.
-	* sometimes the command you want to pipe does not work. For example, `find . -name '*.c' | rm` won't work since `rm` only takes its filenames as arguments or parameters on the command line. We need to use `rm $(find . -name '*.c')` to get it work. `$()` encloses a command that is run in a subshell, the output for that command is substituted in place of the `$()` phrase. Some old syntax also use backticks to do the trick.
+	* sometimes the command you want to pipe does not work. For example, `find . -name '*.c' | rm` won't work since `rm` only takes its filenames as arguments or parameters on the command line. We need to use `rm $(find . -name '*.c')` to get it work. `$()` encloses a command that is run in a subshell, the output for that command is substituted in place of the `$()` phrase. Some old syntax also use backticks to do the trick. Or you can use `find . -name '*.c' | xargs rm`.
 + `Ctrl+d` will send "end of file' and will often terminate the shell.
 + `ls /bin/*sh` will list all shells available.
 + `df -h` to get the disk of file system used (short of disk free?), `-h` means return human readable numbers, e.g. 100Mb. 100Gb.
@@ -94,6 +94,7 @@ Here is a list of the most basic commands in Unix from my learning notes.
 	* `find . -name "*NOTES*" | xargs rm` delete files whose names are NOTES. `rm $(find . -name "*NOTES*" )` is another way.
 	* `find . -type f -exec mv {} {}.txt \;` add all files with .txt at the end.
 	* `find . -type f -not -name "*.txt" -exec mv {} {}.txt \;` match all files do not end with .txt and then add .txt to their names.
+    * `find . -name "*.txt" | sed "s/\.txt$//" | xargs -i echo mv {}.txt {}.md | sh` rename all \*.txt as \*.md. Only works for GNU xargs.
 + `fdupes -d -r path/to/dire` to find and deal with duplicated files within a directory. You may need to `sudo apt-get install fdupes`.
 + `fdupes -r path/to/dire > dup.txt` to save all results in a txt file.
 

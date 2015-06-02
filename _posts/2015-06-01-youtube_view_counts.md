@@ -68,150 +68,150 @@ kable(data.frame(lec = lec_names, view = format(dat$view, big.mark = ",")),
 <table>
  <thead>
   <tr>
-   <th style="text-align:right;"> lec </th>
-   <th style="text-align:left;"> view </th>
+   <th style="text-align:left;"> lec </th>
+   <th style="text-align:right;"> view </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 1.0 </td>
-   <td style="text-align:left;"> 1,456,215 </td>
+   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:right;"> 1,456,215 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 2.0 </td>
-   <td style="text-align:left;">   417,073 </td>
+   <td style="text-align:left;"> 2.0 </td>
+   <td style="text-align:right;">   417,073 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 3.0 </td>
-   <td style="text-align:left;">   356,451 </td>
+   <td style="text-align:left;"> 3.0 </td>
+   <td style="text-align:right;">   356,451 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 4.0 </td>
-   <td style="text-align:left;">   301,951 </td>
+   <td style="text-align:left;"> 4.0 </td>
+   <td style="text-align:right;">   301,951 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 5.0 </td>
-   <td style="text-align:left;">   208,554 </td>
+   <td style="text-align:left;"> 5.0 </td>
+   <td style="text-align:right;">   208,554 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 6.0 </td>
-   <td style="text-align:left;">   197,069 </td>
+   <td style="text-align:left;"> 6.0 </td>
+   <td style="text-align:right;">   197,069 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 7.0 </td>
-   <td style="text-align:left;">   150,147 </td>
+   <td style="text-align:left;"> 7.0 </td>
+   <td style="text-align:right;">   150,147 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 8.0 </td>
-   <td style="text-align:left;">   136,619 </td>
+   <td style="text-align:left;"> 8.0 </td>
+   <td style="text-align:right;">   136,619 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 9.0 </td>
-   <td style="text-align:left;">   150,267 </td>
+   <td style="text-align:left;"> 9.0 </td>
+   <td style="text-align:right;">   150,267 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 10.0 </td>
-   <td style="text-align:left;">   131,614 </td>
+   <td style="text-align:left;"> 10.0 </td>
+   <td style="text-align:right;">   131,614 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 11.0 </td>
-   <td style="text-align:left;">   103,357 </td>
+   <td style="text-align:left;"> 11.0 </td>
+   <td style="text-align:right;">   103,357 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 12.0 </td>
-   <td style="text-align:left;">    81,389 </td>
+   <td style="text-align:left;"> 12.0 </td>
+   <td style="text-align:right;">    81,389 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 13.0 </td>
-   <td style="text-align:left;">    76,344 </td>
+   <td style="text-align:left;"> 13.0 </td>
+   <td style="text-align:right;">    76,344 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 14.0 </td>
-   <td style="text-align:left;">   107,279 </td>
+   <td style="text-align:left;"> 14.0 </td>
+   <td style="text-align:right;">   107,279 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 15.0 </td>
-   <td style="text-align:left;">    98,549 </td>
+   <td style="text-align:left;"> 15.0 </td>
+   <td style="text-align:right;">    98,549 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 16.0 </td>
-   <td style="text-align:left;">    95,258 </td>
+   <td style="text-align:left;"> 16.0 </td>
+   <td style="text-align:right;">    95,258 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 17.0 </td>
-   <td style="text-align:left;">    94,545 </td>
+   <td style="text-align:left;"> 17.0 </td>
+   <td style="text-align:right;">    94,545 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 18.0 </td>
-   <td style="text-align:left;">    89,061 </td>
+   <td style="text-align:left;"> 18.0 </td>
+   <td style="text-align:right;">    89,061 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 19.0 </td>
-   <td style="text-align:left;">    78,405 </td>
+   <td style="text-align:left;"> 19.0 </td>
+   <td style="text-align:right;">    78,405 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 20.0 </td>
-   <td style="text-align:left;">    84,280 </td>
+   <td style="text-align:left;"> 20.0 </td>
+   <td style="text-align:right;">    84,280 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 21.0 </td>
-   <td style="text-align:left;">   158,119 </td>
+   <td style="text-align:left;"> 21.0 </td>
+   <td style="text-align:right;">   158,119 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 22.0 </td>
-   <td style="text-align:left;">   108,468 </td>
+   <td style="text-align:left;"> 22.0 </td>
+   <td style="text-align:right;">   108,468 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 23.0 </td>
-   <td style="text-align:left;">    83,880 </td>
+   <td style="text-align:left;"> 23.0 </td>
+   <td style="text-align:right;">    83,880 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 24.0 </td>
-   <td style="text-align:left;">    83,326 </td>
+   <td style="text-align:left;"> 24.0 </td>
+   <td style="text-align:right;">    83,326 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 24.5 </td>
-   <td style="text-align:left;">    35,586 </td>
+   <td style="text-align:left;"> 24.5 </td>
+   <td style="text-align:right;">    35,586 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 25.0 </td>
-   <td style="text-align:left;">    59,001 </td>
+   <td style="text-align:left;"> 25.0 </td>
+   <td style="text-align:right;">    59,001 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 26.0 </td>
-   <td style="text-align:left;">    61,814 </td>
+   <td style="text-align:left;"> 26.0 </td>
+   <td style="text-align:right;">    61,814 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 27.0 </td>
-   <td style="text-align:left;">    57,314 </td>
+   <td style="text-align:left;"> 27.0 </td>
+   <td style="text-align:right;">    57,314 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 28.0 </td>
-   <td style="text-align:left;">    69,184 </td>
+   <td style="text-align:left;"> 28.0 </td>
+   <td style="text-align:right;">    69,184 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 29.0 </td>
-   <td style="text-align:left;">    84,635 </td>
+   <td style="text-align:left;"> 29.0 </td>
+   <td style="text-align:right;">    84,635 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 30.0 </td>
-   <td style="text-align:left;">    98,086 </td>
+   <td style="text-align:left;"> 30.0 </td>
+   <td style="text-align:right;">    98,086 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 31.0 </td>
-   <td style="text-align:left;">    60,306 </td>
+   <td style="text-align:left;"> 31.0 </td>
+   <td style="text-align:right;">    60,306 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 32.0 </td>
-   <td style="text-align:left;">    35,670 </td>
+   <td style="text-align:left;"> 32.0 </td>
+   <td style="text-align:right;">    35,670 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 33.0 </td>
-   <td style="text-align:left;">    55,034 </td>
+   <td style="text-align:left;"> 33.0 </td>
+   <td style="text-align:right;">    55,034 </td>
   </tr>
   <tr>
-   <td style="text-align:right;"> 34.0 </td>
-   <td style="text-align:left;">    49,936 </td>
+   <td style="text-align:left;"> 34.0 </td>
+   <td style="text-align:right;">    49,936 </td>
   </tr>
 </tbody>
 </table>

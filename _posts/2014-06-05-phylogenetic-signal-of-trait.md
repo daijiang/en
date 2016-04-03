@@ -17,6 +17,7 @@ Phylogenetic niche conservatism: Closely related species are found to be ecologi
 Because all species are related they cannot be treated as independent observations. As a result, the assumption of independence is broken for traditional statistical analysis.
 
 ### Trait correlations
+
 #### Independent contrasts
 
 The phylogenetic independent contrasts (PICs) method is one of the most common approch for quantifying the correlations between two traits while considering the phylogenetic nonindependence of species. For each internal node in the phylogeny, a contrast will be calculated for a trait. A contrast is the difference in a trait between the two daughter nodes weighted by their branch lengths. The estimated trait value for an node is calculated as the mean of its daughter nodes weighted by their branch lengths. As a result, contrasts can be calculated from the tips of the phylogeny toward the root. If the traits are correlated after accounting for phylogenetic nonindependence, it is expected that the contrast values themselves, which are now statistically independent, are correlated. The PICs can be calculated with `pic()` function in the `ape` package.
@@ -157,7 +158,7 @@ phylosig(tree = my.phylo, x = trait.1, method = "lambda", test = T)
 Recall that contrast for a node describes the magnitude of the difference of the trait values for daughter nodes. This difference can be standardized weighting by branch lengths or unstandardized where all btanch lengths are set to one. Thus large contrast values indicate that daughters are very divergent in trait aand lack of phylogenetic signal. The mean contrast value has been used in the past to quantify phylogenetic signal.
 
 
-```
+```r
 my.phylo.2 = my.phylo
 # set all branch length to 1, and calculate unstandardized contrast.
 my.phylo.2 = compute.brlen(my.phylo.2, method = 1)

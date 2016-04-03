@@ -1,6 +1,5 @@
-markdown: redcarpet
+markdown: kramdown
 permalink: /:year/:month/:day/:title/
 url: http://www.daijiang.name/en
 author: Daijiang Li
-highlighter: pygments
-
+# highlighter: pygments

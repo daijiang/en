@@ -6,7 +6,7 @@ tags: [Git, computer]
 ---
 >This post will be update over time along with my git learning.
 
-##Set up
+## Set up
 
 In Ubuntu, it is super easy to install and set up Git. Bascially, just follow the online [reference](http://git-scm.com/docs).
 
@@ -31,9 +31,9 @@ I put the following things in the `~/.gitignore_global` file:
 
 That's it! You can check all of your config information by `git config --list`. If you want to know how to use a commend of git, simply using `man git-commend`, e.g. `man git-add`, `man git-pull`.
 
-##Basic steps
+## Basic steps
 
-####Initialization
+#### Initialization
 
 Then I want to create a directory named as "github" and clone my repositories into this directory. If your repository is private, then git will ask you for username and password.
 
@@ -44,13 +44,13 @@ Then I want to create a directory named as "github" and clone my repositories in
 	cd newProject
 
 If I already have a directory and want to version control that one, `cd` to the directory:
-	
+
 	git init
 	git add *.txt # to track all txt files
 	git commit -m 'initial project version'
 	git commit # will open editor, add comments at there
 
-####Track files
+#### Track files
 
 After then, if you modified a file, you can use the following code to version control files.
 
@@ -59,12 +59,12 @@ After then, if you modified a file, you can use the following code to version co
 	git diff ee456 # diff since commit ee456
 	git add filename # send file to staged
 	git diff --staged # file already staged but not committed
-	git commit -m 'message' 
+	git commit -m 'message'
 	git commit -a # all files, and you can skip the stage step by doing this
 
 You can also rename files by using `git mv namea nameb`. This is equal to: `mv namea nameb; git rm namea; git add nameb`.
 
-####Untrack files
+#### Untrack files
 
 How about files you do not want to track? If you tracked them before, use `git rm filename` to untrack and delete it. If you want just to untrack it and want to keep it in the working directory, use `git rm --cached filename`. If you do not want track them at the beginning, put their names in the `.gitignore` file in the directory. Here is an example of the `.gitignore` file:
 
@@ -73,7 +73,7 @@ How about files you do not want to track? If you tracked them before, use `git r
 	/a.txt # ignore a.txt file in the root, but not subdir/a.txt
 	dire/ # ignore all files in dire directory
 
-####History
+#### History
 
 `git log`: check history of a project. Here are some common options:
 
@@ -84,7 +84,7 @@ How about files you do not want to track? If you tracked them before, use `git r
 	git log --shortstat
 	git log --name-only # or --name-status
 	git log --abbrev-commit
-	git log --relative-date 
+	git log --relative-date
 	git log --pretty=oneline # oneline for each commit
 	git log --pretty=short # other options: full, fuller
 	git log --pretty=format:"%h - %an, %ar : %s"
@@ -94,16 +94,16 @@ How about files you do not want to track? If you tracked them before, use `git r
 
 In order to check an older version of a file:
 
-	git show HEAD~3:path/to/file/from/root.tex 
-	    # show the version of root.tex from the 3rd latest commit	
-	git checkout 911ead 
+	git show HEAD~3:path/to/file/from/root.tex
+	    # show the version of root.tex from the 3rd latest commit
+	git checkout 911ead
 
-####Undo actions
+#### Undo actions
 
 	git checkout -- file.name # undo the modification in file.name (unstaged)
-	
+
 	git reset HEAD filename # unstage file
-	
+
 	# undo the latest commit
 	git commit -m 'bad commit'
 	git add forgotten.file
@@ -116,7 +116,7 @@ In order to check an older version of a file:
 	git fetch origin
 	git reset --hard origin/master
 
-####Branch
+#### Branch
 
 Git will reset the working directory when you switch branches. Make sure to commit everything before switch branch.
 
@@ -139,7 +139,7 @@ If two branches changed the same part of a file, there will be merge confliction
 	git branch -d branch.merged # delete branches already merged
 	git branch -D branch.not.merged # dangerous! Are you sure? -D will force to delete.
 
-#####stashing
+##### stashing
 
 When you work on some project which is not ready to commit, but at the same time you need to switch to another branch. You can use stashing: store the current working.
 
@@ -156,9 +156,9 @@ You can simply use `git pull` to update your local project from Github. If you c
 
 #### Push to Github
 
-Go to [github](https://github.com/), login, create a new repository, and follow their instruction.	
+Go to [github](https://github.com/), login, create a new repository, and follow their instruction.
 
-If you want to use SSH key when you push things to github, see [here](https://help.github.com/articles/generating-ssh-keys). Then you need change the url of your local repository, following [this page](https://help.github.com/articles/changing-a-remote-s-url). 
+If you want to use SSH key when you push things to github, see [here](https://help.github.com/articles/generating-ssh-keys). Then you need change the url of your local repository, following [this page](https://help.github.com/articles/changing-a-remote-s-url).
 
 ## Reference
 
